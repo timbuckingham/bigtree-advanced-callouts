@@ -48,7 +48,7 @@
 		?>
 		<article<?php if (!$no_drag) { ?> class="draggable"<?php } ?>>
 			<input type="hidden" class="callout_data" value="<?=base64_encode(json_encode($callout))?>" />
-			<?php BigTreeAdmin::drawArrayLevel(array($x),$callout) ?>
+			<?php BigTreeAdmin::drawArrayLevel(array($x),$callout,$field) ?>
 			<h4>
 				<?=BigTree::safeEncode($callout["display_title"])?>
 				<input type="hidden" name="<?=$field["key"]?>[<?=$x?>][display_title]" value="<?=BigTree::safeEncode($callout["display_title"])?>" />
