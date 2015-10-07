@@ -1,6 +1,9 @@
 <?php
 	$bigtree["js"][] = "*/com.fastspot.predefined-callouts/js/predefined-callouts.js";
 
+	// Pretend to be vanilla callouts for layout purposes
+	$field["type"] = "callouts";
+
 	// Prevent warnings on bad value
 	if (!is_array($field["value"])) {
 		$field["value"] = array();

@@ -1,4 +1,7 @@
 <?php
+	// Pretend to be vanilla callouts for layout purposes
+	$field["type"] = "callouts";
+
 	$callout_number = 0;
 	foreach ($field["options"]["prefilled"] as $entry) {
 		$callout = $admin->getCallout($entry["type"]);
