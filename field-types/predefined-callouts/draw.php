@@ -1,5 +1,5 @@
 <?php
-	$bigtree["js"][] = "*/com.fastspot.predefined-callouts/js/predefined-callouts.js";
+	$bigtree["js"][] = "*/com.fastspot.advanced-callouts/js/predefined-callouts.js";
 
 	// Pretend to be vanilla callouts for layout purposes
 	$field["type"] = "callouts";

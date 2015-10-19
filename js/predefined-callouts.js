@@ -71,7 +71,7 @@ var BTXPredefinedCallouts = function(settings) {
 			}
 
 			CurrentItem = $(this).parents("article");
-			$.ajax("admin_root/*/com.fastspot.predefined-callouts/ajax/edit/", { type: "POST", data: { locked: Locked, count: Count, data: CurrentItem.find(".callout_data").val(), groups: Groups, key: Key }, complete: function(response) {
+			$.ajax("admin_root/*/com.fastspot.advanced-callouts/ajax/edit/", { type: "POST", data: { locked: Locked, count: Count, data: CurrentItem.find(".callout_data").val(), groups: Groups, key: Key }, complete: function(response) {
 				BigTreeDialog({
 					title: "Edit " + Noun,
 					content: response.responseText,
