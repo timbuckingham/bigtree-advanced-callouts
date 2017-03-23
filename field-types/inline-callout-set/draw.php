@@ -8,7 +8,7 @@
 
 		if (count($callout["resources"])) {
 ?>
-<fieldset class="callouts<? if ($bigtree["last_resource_type"] == "callouts") { ?> callouts_no_margin<? } ?>">
+<fieldset class="callouts<?php if ($bigtree["last_resource_type"] == "callouts") { ?> callouts_no_margin<?php } ?>">
 	<input type="hidden" name="<?=$field["key"]?>[<?=$callout_number?>][type]" value="<?=$callout["id"]?>" />
 	<?php
 			if ($entry["title"]) {
