@@ -30,7 +30,7 @@
 	}
 ?>
 <div id="callout_resources" class="callout_fields">
-	<?php include BigTree::path("admin/ajax/callouts/resources.php") ?>
+	<?php include BigTree::path("admin/ajax/callouts/resources.php"); ?>
 </div>
 <script>
 	$("#callout_type select").change(function(event,data) {

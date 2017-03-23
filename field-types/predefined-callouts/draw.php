@@ -11,8 +11,10 @@
 
 	// Make sure we have all of our prefilled callouts
 	$missing_prefilled = $field["options"]["prefilled"];
+	
 	foreach ($field["value"] as &$item) {
 		$prefilled_index = array_search($item["type"],$missing_prefilled);
+		
 		if ($prefilled_index !== false) {
 			unset($missing_prefilled[$prefilled_index]);
 		}
@@ -35,14 +37,15 @@
 	<div class="contain">
 		<?php
 			$x = 0;
+			
 			foreach ($field["value"] as $callout) {
 				$type = $admin->getCallout($callout["type"]);
-
 				$no_drag = false;
-				// Setup data attributes
 				$edit_attributes = array();
+
 				if ($callout["!locked"]) {
 					$edit_attributes[] = 'data-locked="true"';
+					
 					if (!empty($field["options"]["disable_drag"])) {
 						$edit_attributes[] = 'data-no-drag="true"';
 						$no_drag = true;
@@ -103,13 +106,14 @@
 			}
 		}
 	?>
-	<script>
-		BTXPredefinedCallouts({
-			selector: "#<?=$field["id"]?>",
-			key: "<?=$field["key"]?>",
-			noun: "<?=$noun?>",
-			groups: <?=json_encode($field["options"]["additional"])?>,
-			max: <?=$max?>
-		});
-	</script>
 </fieldset>
+
+<script>
+	BTXPredefinedCallouts({
+		selector: "#<?=$field["id"]?>",
+		key: "<?=$field["key"]?>",
+		noun: "<?=$noun?>",
+		groups: <?=json_encode($field["options"]["additional"])?>,
+		max: <?=$max?>
+	});
+</script>

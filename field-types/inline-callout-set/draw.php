@@ -28,6 +28,7 @@
 					"tabindex" => $bigtree["tabindex"]++,
 					"options" => $resource["options"]
 				);
+				
 				if (empty($callout_field["options"]["directory"])) {
 					$callout_field["options"]["directory"] = "files/callouts/";
 				}

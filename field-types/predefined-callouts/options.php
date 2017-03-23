@@ -34,6 +34,7 @@
 		<ul>
 			<?php
 				$prefilled_x = 0;
+
 				foreach ($data["prefilled"] as $id) {
 					$callout = $admin->getCallout($id);
 			?>
@@ -76,6 +77,7 @@
 		<ul>
 			<?php
 				$additional_x = 0;
+				
 				foreach ($data["additional"] as $id) {
 					$group = $admin->getCalloutGroup($id);
 			?>

@@ -27,6 +27,7 @@
 						"input" => $bigtree["post_data"][$resource["id"]],
 						"file_input" => $bigtree["file_data"][$resource["id"]]
 					);
+
 					if (empty($field["options"]["directory"])) {
 						$field["options"]["directory"] = "files/pages/";
 					}
@@ -37,14 +38,17 @@
 					}
 
 					$output = BigTreeAdmin::processField($field);
+					
 					if (!is_null($output)) {
 						$bigtree["entry"][$field["key"]] = $output;
 					}
 				}
+
 				// Set locked state
 				if ($bigtree["post_data"]["!locked"]) {
 					$bigtree["entry"]["!locked"] = true;
 				}
+				
 				$bigtree["parsed_callouts"][] = $bigtree["entry"];
 			}
 		}
@@ -55,3 +59,4 @@
 	$bigtree["file_data"] = $bigtree["saved_file_data"];
 	$field = $bigtree["callout_field"];
 	$field["output"] = $bigtree["parsed_callouts"];
+	

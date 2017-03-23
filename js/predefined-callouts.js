@@ -43,6 +43,7 @@ var BTXPredefinedCallouts = function(settings) {
 							removeDialog();
 							Count++;
 							var count = List.find("article").length;
+							
 							if (Max && count >= Max) {
 								AddButton.hide();
 							}
@@ -81,6 +82,7 @@ var BTXPredefinedCallouts = function(settings) {
 						e.preventDefault();
 						
 						var item;
+						
 						if (item = getCallout()) {
 							CurrentItem.replaceWith(item);
 							removeDialog();
@@ -116,35 +118,43 @@ var BTXPredefinedCallouts = function(settings) {
 	
 			// Validate required fields.
 			var validator = BigTreeFormValidator(LastDialog);
+			
 			if (!validator.validateForm(false,true)) {
 				return false;
 			}
 			
 			var article = $('<article>');
 			var markup = '<h4></h4>';
+			
 			// Locked elements don't have a dropdown for type
 			if (Locked) {
 				markup += '<p>' + CurrentItem.find("p").html() + '</p>';
 			} else {
 				markup += '<p>' + $("#callout_type select").get(0).options[$("#callout_type select").get(0).selectedIndex].text + '</p>';
 			}
+
 			markup += '<div class="bottom">';
+			
 			if (!NoDrag) {
 				markup += '<span class="icon_drag"></span>';
 			}
+			
 			if (!Locked) {
 				markup += '<a href="#" class="icon_delete"></a>';
 			}
+			
 			article.html(markup + '</div>');
 			
 			// Try our best to find some way to describe the callout
 			Description = "";
 			DescriptionField = LastDialog.find("[name='" + LastDialog.find(".display_field").val() + "']");
+			
 			if (DescriptionField.is('select')) {
 				Description = DescriptionField.find("option:selected").text();
 			} else {
 				Description = DescriptionField.val();
 			}
+
 			if ($.trim(Description) == "") {
 				Description = LastDialog.find(".display_default").val();
 			}
@@ -154,11 +164,13 @@ var BTXPredefinedCallouts = function(settings) {
 				if ($(this).attr("type") != "submit") {
 					if ($(this).is("textarea") && $(this).css("display") == "none") {
 						var mce = tinyMCE.get($(this).attr("id"));
+						
 						if (mce) {
 							mce.save();
 							tinyMCE.execCommand('mceRemoveControl',false,$(this).attr("id"));
 						}
 					}
+
 					$(this).hide().get(0).className = "";
 					article.append($(this));
 				}
@@ -178,10 +190,12 @@ var BTXPredefinedCallouts = function(settings) {
 
 		// Init routine
 		Count = List.find("article").length;
+		
 		// Hide the add button if we're at or above the limit
 		if (Max && Count >= Max) {
 			AddButton.hide();
 		}
+		
 		Container.on("click",".add_callout",addCallout)
 				 .on("click",".icon_edit",editCallout)
 				 .on("click",".icon_delete",deleteCallout);

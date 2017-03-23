@@ -1,6 +1,7 @@
 <?php
 	$individuals = $admin->getCallouts("name ASC");
 	$callout_types = array();
+	
 	foreach ($individuals as $item) {
 		$callout_types[$item["id"]] = htmlspecialchars_decode($item["name"]." (".$item["id"].")");
 	}
