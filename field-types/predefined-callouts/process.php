@@ -7,7 +7,7 @@
 	$bigtree["saved_file_data"] = $bigtree["file_data"];
 	$bigtree["parsed_callouts"] = array();
 
-	if (count($bigtree["callout_field"]["input"])) {
+	if (is_array($bigtree["callout_field"]["input"]) && count($bigtree["callout_field"]["input"])) {
 		foreach ($bigtree["callout_field"]["input"] as $number => $data) {
 			// Make sure there's a callout here...
 			if ($data["type"]) {
