@@ -10,7 +10,7 @@
 	}
 
 	// Make sure we have all of our prefilled callouts
-	$missing_prefilled = $field["options"]["prefilled"];
+	$missing_prefilled = $field["settings"]["prefilled"];
 	
 	foreach ($field["value"] as &$item) {
 		$prefilled_index = array_search($item["type"],$missing_prefilled);
@@ -29,8 +29,8 @@
 	}
 	
 	// Setup word usage and max values
-	$noun = $field["options"]["noun"] ? htmlspecialchars($field["options"]["noun"]) : "Callout";
-	$max = !empty($field["options"]["max"]) ? $field["options"]["max"] : 0;
+	$noun = $field["settings"]["noun"] ? htmlspecialchars($field["settings"]["noun"]) : "Callout";
+	$max = !empty($field["settings"]["max"]) ? $field["settings"]["max"] : 0;
 ?>
 <fieldset class="callouts<?php if ($bigtree["last_resource_type"] == "callouts") { ?> callouts_no_margin<?php } ?>" id="<?=$field["id"]?>">
 	<label<?=$label_validation_class?>><?=$field["title"]?><?php if ($field["subtitle"]) { ?> <small><?=$field["subtitle"]?></small><?php } ?></label>
@@ -46,7 +46,7 @@
 				if ($callout["!locked"]) {
 					$edit_attributes[] = 'data-locked="true"';
 					
-					if (!empty($field["options"]["disable_drag"])) {
+					if (!empty($field["settings"]["disable_drag"])) {
 						$edit_attributes[] = 'data-no-drag="true"';
 						$no_drag = true;
 					}
@@ -66,7 +66,7 @@
 			<div class="bottom">
 				<?php
 					// If it's a non-prefilled callout or we're letting them drag, show the icon
-					if (empty($callout["!locked"]) || empty($field["options"]["disable_drag"])) {
+					if (empty($callout["!locked"]) || empty($field["settings"]["disable_drag"])) {
 				?>
 				<span class="icon_drag"></span>
 				<?php
@@ -95,7 +95,7 @@
 		?>
 	</div>
 	<?php
-		if (array_filter(array($field["options"]["additional"]))) {
+		if (array_filter(array($field["settings"]["additional"]))) {
 	?>
 	<a href="#" class="add_callout button"><span class="icon_small icon_small_add"></span>Add <?=$noun?></a>
 	<?php
@@ -113,7 +113,7 @@
 		selector: "#<?=$field["id"]?>",
 		key: "<?=$field["key"]?>",
 		noun: "<?=$noun?>",
-		groups: <?=json_encode($field["options"]["additional"])?>,
+		groups: <?=json_encode($field["settings"]["additional"])?>,
 		max: <?=$max?>
 	});
 </script>

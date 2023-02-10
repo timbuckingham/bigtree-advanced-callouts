@@ -13,7 +13,7 @@
 	foreach ($field["settings"]["prefilled"] as $entry) {
 		$callout = $admin->getCallout($entry["type"]);
 		
-		if (count($callout["resources"])) {
+		if (!empty($callout["resources"]) && is_array($callout["resources"])) {
 ?>
 <fieldset
 	class="callouts<?php if (!empty($bigtree["last_resource_type"]) && $bigtree["last_resource_type"] == "callouts") { ?> callouts_no_margin<?php } ?>">
